@@ -3,6 +3,8 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { getPostList } from "../../utils/posts";
 
+import PostList from "../../components/PostList";
+
 export const getStaticProps = () => {
   const postList = getPostList();
   return {
@@ -19,9 +21,9 @@ const Blog = ({ postList }) => {
         <title>Blog // UP Boutique</title>
       </Head>
       <div className="page-wrapper">
-        <Header />
+        <Header bgImage="/images/featured-1.png" />
         <main>
-          <pre>{JSON.stringify(postList, null, 2)}</pre>
+          <PostList posts={postList} />
         </main>
         <Footer />
       </div>

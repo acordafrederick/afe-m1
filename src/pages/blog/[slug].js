@@ -3,6 +3,8 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { getPostSlugs, getPostData } from "../../utils/posts";
 
+import SinglePost from "../../components/SinglePost";
+
 export const getStaticProps = async ({ params }) => {
   const postData = await getPostData(params.slug);
   return {
@@ -27,9 +29,10 @@ const BlogPost = ({ postData }) => {
         <title>{postData.postTitle} // UP Boutique</title>
       </Head>
       <div className="page-wrapper">
-        <Header />
+        <Header bgImage={postData.featuredImage} />
+
         <main>
-          <pre>{JSON.stringify(postData, null, 2)}</pre>
+          <SinglePost post={postData} />
         </main>
         <Footer />
       </div>
